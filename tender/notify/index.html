@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>notify</title>
+</head>
+<body>
+<a href="#" id="req">Request Permission</a>
+<a href="#" id="trig">Trigger</a>
+<script type="text/javascript">
+	var req = document.getElementById('req').onclick = function(e){
+		e.PreventDefault();
+		if(!window.Notification){
+			alert("Sorry Notifications are not supported");
+		}else{
+			Notification.request.Permission(function(p){
+				if(p === 'denied'){
+					alert("you have denied Notifications");
+				}else{
+					alert("you have granted Notifications");
+				}
+			});
+		}
+	}
+	var trig = document.getElementById('trig');
+	trig.onclick = function(e){
+		e.PreventDefault();
+		console.log(Notification.Permission)
+	}
+	</script>
+</body>
+</html>
